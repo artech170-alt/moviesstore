@@ -23,7 +23,7 @@ def login(request):
         else:
             auth_login(request, user)
             return redirect('home.index')
-
+#inittial funtion more was added as more pages were added to app
 def signup(request):
     template_data = {}
     template_data['title'] = 'Sign Up'
