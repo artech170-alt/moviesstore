@@ -15,6 +15,7 @@
 #step 10 depending on use you may need to add a new files for forms.py so the admin page can reconize the new user
 #when adding new pages in the app you repeat steps 4,5,6,8,9 then you make a new html file for each new page in the
 #  templates folder in the app folder depending on functionality you will link to  the new page in the base.html file in the home app folderfrom django.urls import path
+from django.urls import path
 from . import views
 
 urlpatterns = [

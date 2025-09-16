@@ -6,6 +6,7 @@
 #step 4 register the models in the admin.py file in the app folder
 #step 5 update or creat function usual requires updating the html file the function in the views.py file
 #and updating the urls.py file in the app folderfrom django.db import models
+from django.db import models
 from django.contrib.auth.models import User
 from movies.models import Movie
 
