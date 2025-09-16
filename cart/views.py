@@ -42,18 +42,36 @@ def purchase(request):
     movies_in_cart = Movie.objects.filter(id__in=movie_ids)
     cart_total = calculate_cart_total(cart, movies_in_cart)
 
+    # Check stock before proceeding
+    for movie in movies_in_cart:
+        quantity = int(cart[str(movie.id)])
+        if movie.stock < quantity:
+            # Not enough stock, redirect or show error
+            return render(request, 'cart/index.html', {
+                'template_data': {
+                    'title': 'Cart',
+                    'movies_in_cart': movies_in_cart,
+                    'cart_total': cart_total,
+                    'error': f'Not enough stock for {movie.name}.'
+                }
+            })
+
     order = Order()
     order.user = request.user
     order.total = cart_total
     order.save()
 
     for movie in movies_in_cart:
+        quantity = int(cart[str(movie.id)])
         item = Item()
         item.movie = movie
         item.price = movie.price
         item.order = order
-        item.quantity = cart[str(movie.id)]
+        item.quantity = quantity
         item.save()
+        # Deduct stock
+        movie.stock -= quantity
+        movie.save()
 
     request.session['cart'] = {}
     template_data = {}
