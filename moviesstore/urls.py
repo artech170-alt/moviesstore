@@ -1,4 +1,3 @@
-
 #step 1 creat an app by putting python manage.py startapp [inset name] into the terminal
 #step 2 add the app to the settings.py file in the INSTALLED_APPS section
 #step 3 add the path in the  urls.py file in the main project folder urls.py 
@@ -33,18 +32,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('movies/', include('movies.urls')),
-    #thes are paths for the accounts app
     path('accounts/', include('accounts.urls')),
     path('cart/', include('cart.urls')),
-
+    path('petitions/', include('petitions.urls')),  # Add this line
 ]
-urlpatterns += static(settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT)

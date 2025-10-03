@@ -1,10 +1,8 @@
-
-
 {% extends 'base.html' %}
 
 {% block content %}
 
-<header class="masthead bg-index text-white text-centerpy-4">
+<header class="masthead bg-index text-white text-center py-4">
 
   <div class="container d-flex align-items-center flex-column pt-2">
 
@@ -28,6 +26,11 @@
 
       </div>
 
+    </div>
+
+    <div class="text-center mb-4">
+      <a href="{% url 'movies.index' %}" class="btn btn-outline-primary me-2">Browse Movies</a>
+      <a href="{% url 'petitions.index' %}" class="btn btn-outline-secondary">Movie Petitions</a>
     </div>
 
   </div>
