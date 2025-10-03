@@ -132,3 +132,6 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Login URL configuration
+LOGIN_URL = '/accounts/login/'  # Change from signin to login

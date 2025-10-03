@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Petition, Vote
 
+@login_required
 def index(request):
     petitions = Petition.objects.all().order_by('-created_at')
     template_data = {
